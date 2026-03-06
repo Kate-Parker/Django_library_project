@@ -1,0 +1,59 @@
+
+<!--principal/former code i was using -->
+<!DOCTYPE html>
+<html lang="fr">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bibliotheque de livre</title>
+</head>
+<body>
+        <header>
+            <h1><a href="{% url 'liste_livres' %}" style="text-decoration:none; color:black;"></a></h1>
+            
+            {% if categorie_actuelle %}
+                <h2>My Books  </h2>
+            {% else %}
+                <h2>Tous les livres</h2>
+            {% endif %}
+        </header>
+
+    
+        <article>
+                {% for un_livre in livres %}
+                <div>
+                    <h3>{{ un_livre.titre }}</h3> 
+                    <p>Author : {{ un_livre.author }}</p>
+                    
+                    <p><strong>Catégorie :</strong> 
+                        {% if un_livre.categorie %}
+                            <a href="{% url 'filtrer_categorie' un_livre.categorie.libelle %}">
+                                {{ un_livre.categorie.libelle }}
+                            </a>
+
+                            {% else %}
+                            Sans catégorie
+                        {% endif %}
+                        
+                        {% if un_livre.fichier_pdf %}
+                        <div style="margin-top: 10px;">
+                            <a href="{{ un_livre.fichier_pdf.url }}" target="_blank" 
+                                style="padding: 10px 15px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px;">
+                                Cliquez ici pour voir le PDF
+                            </a>
+                            
+                            <a href="{{ un_livre.fichier_pdf.url }}" download 
+                                style="margin-left: 10px; color: #555;">
+                                Télécharger
+                            </a>
+                        </div>
+                        {% else %}
+                        <p><em>Désolé, aucun livre n'est disponible pour le moment.</em></p>
+                        {% endif %}
+                </div>
+                <hr>
+                {% endfor %}
+        </article>     
+</body>
+</html>

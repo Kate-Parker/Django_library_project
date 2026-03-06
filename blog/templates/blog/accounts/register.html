@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FONT AWESOME (Lien corrigé pour les icônes) -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+    
+    <style>
+        /* Force les champs Django à prendre toute la largeur et avoir du style */
+        input, input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            display: block;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+    <!-- Le container 'vh-100' permet de centrer verticalement sur tout l'écran -->
+    <div class="container vh-100 d-flex flex-column justify-content-center">
+        <div class="row justify-content-center">
+            <!-- 'col-md-5' réduit la largeur de la carte sur ordinateur -->
+            <div class="col-11 col-md-6 col-lg-4">
+                
+                <form method="POST" class="card shadow p-4">
+                    <h2 class="text-center mb-4">Create Account</h2>
+                    <div class="card-body p-0">
+                        {% csrf_token %}
+
+                        <!-- Username -->
+                        <div class="mb-3">
+                            <label class="form-label"><i class="fa-solid fa-user me-2 text-success"></i>{{form.username.label}}</label>
+                            {{form.username}}
+                        </div>
+
+                        <!-- Password -->
+                        <div class="mb-3">
+                            <label class="form-label"><i class="fa-solid fa-lock me-2 text-success"></i> {{form.password1.label}}</label>
+                            {{form.password1}}
+                        </div>
+
+                        <!-- Confirm Password -->
+                        <div class="mb-4">
+                            <label class="form-label"><i class="fa-solid fa-check-double me-2 text-success"></i>{{form.password2.label}}</label>
+                            {{form.password2}}
+                        </div>
+
+                        <!-- Bouton Centré -->
+                        <div class="text-center d-grid">
+                            <input type="submit" name="Create User" value="Envoyer" class="btn btn-success py-2 fw-bold">
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Lien Login Centré -->
+                <div class="text-center mt-3">
+                    <p class="text-muted">Already have an account? <a href="{% url 'login' %}" class="text-success text-decoration-none fw-bold">Login</a></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cloudflare.com">
+</head>
+<body>
+    <form method="POST"  class="container mb-5">
+        <div class="card shadow-sm h-100 p-4">
+            <h2 class="text-center mb-4">Create Account</h2>
+            <div class="card-body">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label class="form-label"><i class="fa-solid fa-user me-2"></i>{{form.username.label}}</label>
+                    {{form.username}}
+                </div>
+                <hr>
+
+                <div class="mb-3">
+                    <label class="form-label"><i class="fa-solid fa-user me-2"></i> {{form.password1.label}}</label>
+                    {{form.password1}}
+                </div>
+
+           
+
+                <div class="mb-3">
+                    <label class="form-label"><i class="fa-solid fa-user me-2"></i>{{form.password2.label}}</label>
+                   {{form.password2}}
+                </div>
+
+                <div class="text-center">
+                    <input type="submit" name="Create User" value="Envoyer" class="btn btn-success px-5 py-2">
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="text-center mt-3">
+    <p class="text-muted">Already have an account? <a href="{% url 'login' %}">Login</a></p>
+    </div>
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+
+
+

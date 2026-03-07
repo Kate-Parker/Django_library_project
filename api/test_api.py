@@ -1,4 +1,4 @@
-#this page is trying to communicate/request data from my api's
+#this page is trying to communicate/request data from an existing  api
 import requests
 
 
